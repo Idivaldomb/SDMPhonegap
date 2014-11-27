@@ -29,10 +29,10 @@ src="cordova-1.7.0.js"></script>
       success : function(xml) {
         console.log("Entering getContactList.success()");
       
-        $(xml).find("contact").each(function() {
-          var html = '<li>' + $(this).find("firstName").text() 
-          + ' ' + $(this).find("lastName").text() +'</li>';
-          $('#contactList').append(html);
+        $(xml).find("tipoLogradouro").each(function() {
+          var html = '<li>' + $(this).find("logradouro").text() 
+          + ' ' + $(this).find("cidade").text() +'</li>';
+          $('#List').append(html);
         });
         console.log("Exiting getContactList.success()");
       } 
@@ -44,6 +44,6 @@ src="cordova-1.7.0.js"></script>
 <body>
   <h3>Retorno do consumo</h3>
   <button id="getContactBtn">valores</button>
-  <ul id="contactList"></ul>
+  <ul id="List"></ul>
 </body>
 </html>
