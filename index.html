@@ -18,8 +18,8 @@ src="cordova-1.7.0.js"></script>
   function getContactList(){ 
     console.log("Entering getContactList()");
     $.ajax({
-      url : "http://cep.paicon.com.br/xml/14150000",
-      dataType:"xml",
+      url : "http://localhost/SlimNotas/notas",
+      dataType:"json",
       cache: false,
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
@@ -29,9 +29,9 @@ src="cordova-1.7.0.js"></script>
       success : function(xml) {
         console.log("Entering getContactList.success()");
       
-        $(xml).find("tipoLogradouro").each(function() {
-          var html = '<li>' + $(this).find("logradouro").text() 
-          + ' ' + $(this).find("cidade").text() +'</li>';
+        $(xml).find("id").each(function() {
+          var html = '<li>' + $(this).find("descricao").text() 
+          + ' ' + $(this).find("valor").text() +'</li>';
           $('#List').append(html);
         });
         console.log("Exiting getContactList.success()");
