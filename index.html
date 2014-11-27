@@ -18,8 +18,8 @@ src="cordova-1.7.0.js"></script>
   function getContactList(){ 
     console.log("Entering getContactList()");
     $.ajax({
-      url : "http://os.smarapd.com.br/serverupdate/ServicoRest/pacotes/289/5",
-      dataType:"text",
+      url : "http://cep.paicon.com.br/xml/14150000",
+      dataType:"xml",
       cache: false,
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
