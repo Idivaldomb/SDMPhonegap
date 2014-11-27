@@ -1,15 +1,49 @@
- <!DOCTYPE HTML> 
- <html> 
- <head> 
- <title>Trabalho SDM</title> 
- <meta charset="UTF-8"> 
- <meta name="viewport" content="width=device-width, height=device-height" /> 
- <script type="text/javascript" src="cordova.js"></script> 
- <script type="text/javascript" src="js/jquery.min.js "></script> 
- <script type="text/javascript" src="js/index.js"></script> 
-. </head> 
- <body> 
- Nome: <input id="txtNome" type="text"> 
- <button id="btOk">Ok</button> 
- </body> 
-</html> 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Device Properties Example</title>
+<script type="text/javascript" charset="utf-8" 
+src="cordova-1.7.0.js"></script>
+<script src="js/jquery.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $("#getContactBtn").click(getContactList);
+  });
+  function onDeviceReady() {
+    console.log("Entering index.html.onDeviceReady");
+    getContactList();
+    console.log("Exiting index.html.onDeviceReady");
+  }
+  function getContactList(){ 
+    console.log("Entering getContactList()");
+    $.ajax({
+      url : "http://192.168.1.101:9000/ManageContact/rest/contact",
+      dataType:"xml",
+      cache: false,
+      error:function (xhr, ajaxOptions, thrownError){
+        debugger;
+                alert(xhr.statusText);
+                alert(thrownError);
+            },
+      success : function(xml) {
+        console.log("Entering getContactList.success()");
+      
+        $(xml).find("contact").each(function() {
+          var html = '<li>' + $(this).find("firstName").text() 
+          + ' ' + $(this).find("lastName").text() +'</li>';
+          $('#contactList').append(html);
+        });
+        console.log("Exiting getContactList.success()");
+      } 
+    });
+    console.log("Exiting getContactList()");
+  }
+</script>
+</head>
+<body>
+  <h3>Contact List</h3>
+  <button id="getContactBtn">Get Contact</button>
+  <ul id="contactList"></ul>
+</body>
+</html>
