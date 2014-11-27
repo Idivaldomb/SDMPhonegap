@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Device Properties Example</title>
+<title>Trabalho de SDM</title>
 <script type="text/javascript" charset="utf-8" 
 src="cordova-1.7.0.js"></script>
 <script src="js/jquery.js"></script>
@@ -18,8 +18,8 @@ src="cordova-1.7.0.js"></script>
   function getContactList(){ 
     console.log("Entering getContactList()");
     $.ajax({
-      url : "http://192.168.1.101:9000/ManageContact/rest/contact",
-      dataType:"xml",
+      url : "http://os.smarapd.com.br/serverupdate/ServicoRest/pacotes/289/5",
+      dataType:"text",
       cache: false,
       error:function (xhr, ajaxOptions, thrownError){
         debugger;
@@ -42,8 +42,8 @@ src="cordova-1.7.0.js"></script>
 </script>
 </head>
 <body>
-  <h3>Contact List</h3>
-  <button id="getContactBtn">Get Contact</button>
+  <h3>Retorno do consumo</h3>
+  <button id="getContactBtn">valores</button>
   <ul id="contactList"></ul>
 </body>
 </html>
